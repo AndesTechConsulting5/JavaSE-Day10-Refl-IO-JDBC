@@ -11,9 +11,9 @@ public class AppJdbc {
 
         Class.forName("org.postgresql.Driver");
 
-        String url = "jdbc:postgresql://213.199.139.156/rfb19";
+        String url = "jdbc:postgresql://213.199.*******/rfb19";
         Properties props = new Properties();
-        props.setProperty("user","user01");
+        props.setProperty("user","*******");
         props.setProperty("password","*****");
         props.setProperty("ssl","false");
 
@@ -64,21 +64,18 @@ public class AppJdbc {
                         rset.getString(2));
             }
 
-
-
-
-
-
-
-            statement.close();
-            pstate.close();
-            conn.close();
+//
+//            if (pstate != null)    pstate.close();
+//            if (statement != null) statement.close();
+//            if (conn != null)      conn.close();
         }
         catch (SQLException ex){ex.printStackTrace();}
         finally {
             try {
+                if (pstate != null) pstate.close();
                 if (statement != null) statement.close();
                 if (conn != null) conn.close();
+
             } catch (SQLException ex) {ex.printStackTrace();}
 
         }
